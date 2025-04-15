@@ -12,6 +12,7 @@ const startServer = () => {
   app.use(express.static(path.resolve("public")))
 
   app.use("/api/transactions", transactionsRouter)
+
   return app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
   })
