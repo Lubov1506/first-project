@@ -2,12 +2,11 @@ import React from "react"
 import TransactionItem from "../TransactionItem/TransactionItem";
 
 const TransactionsList = ({transactions}) => {
-    console.log(transactions);
     
   return (
-    <ul className='grid grid-cols-3 gap-4'>
+    <ul className='grid grid-cols-3 gap-2'>
       {transactions.map((item) => {
-        return <TransactionItem item={item} />
+        return <TransactionItem key={item._id} item={item} />
       })}
     </ul>
   )

@@ -19,7 +19,6 @@ const transactionsSlice = createSlice({
     builder
       .addCase(fetchTransactions.fulfilled, (state, action) => {
         state.transactions = action.payload
-        console.log(state.transactions)
       })
       .addMatcher(isAnyOf(fetchTransactions.pending), (state) => {
         state.error = false

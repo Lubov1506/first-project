@@ -3,7 +3,6 @@ import clsx from "clsx"
 
 const TransactionItem = (item) => {
   const { _id, name, category, amount, type } = item.item
-  console.log(item)
 
   return (
     <li className='h-[150px] w-[200px] py-2 px-4 bg-teal-100' key={_id}>

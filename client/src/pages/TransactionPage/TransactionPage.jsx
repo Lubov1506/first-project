@@ -10,10 +10,9 @@ const TransactionPage = () => {
     dispatch(fetchTransactions())
   }, [dispatch])
   const transactions = useSelector(selectTransactions)
-  console.log(transactions.length)
 
   return (
-    <div>
+    <div className='flex flex-col items-start px-4 py-4'>
       <h1 className='text-3xl font-bold text-teal-950'>Transactions</h1>
       {transactions.length > 0 && (
         <TransactionsList transactions={transactions} />
