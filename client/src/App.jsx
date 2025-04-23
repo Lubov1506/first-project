@@ -1,7 +1,19 @@
+import { Route, Routes } from "react-router-dom"
+import { HomePage, NotFoundPage, TransactionPage } from "./pages"
+import { Layout } from "./components"
+
 function App() {
   return (
     <>
-      <h1 className='text-3xl font-bold underline text-green-300'>hello</h1>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<HomePage />} />
+
+          <Route path='/transactions' element={<TransactionPage />} />
+
+        </Route>
+        <Route path='*' element={<NotFoundPage />} />
+      </Routes>
     </>
   )
 }

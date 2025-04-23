@@ -11,6 +11,18 @@ const transactionSchema = new Schema(
       required: [true, "Amount is required"],
       min: 0,
     },
+    category: {
+      type: String,
+      enum: [
+        "food",
+        "entertainment",
+        "transport",
+        "health",
+        "house",
+        "animals",
+        "other",
+      ],
+    },
     type: {
       type: String,
       required: [true, "Type is required"],
