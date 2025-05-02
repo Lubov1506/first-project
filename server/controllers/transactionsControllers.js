@@ -11,7 +11,6 @@ const createTransaction = async (req, res, next) => {
 }
 const getAllTransactions = async (req, res, next) => {
   const transactions = await transactionsServices.getTransactions()
-  console.log(transactions)
 
   res.json({
     status: 200,

@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit"
-import { fetchTransactions } from "./.operations"
+import { fetchTransactions } from "./operations"
 
 const initialState = {
   transactions: [],
