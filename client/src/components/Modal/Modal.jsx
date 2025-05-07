@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-
+import { IoClose } from "react-icons/io5"
 const Modal = ({ children, title = "Default modal", onClose }) => {
   const handleBackDropClick = (e) => {
     if (e.target === e.currentTarget) {
@@ -20,17 +20,15 @@ const Modal = ({ children, title = "Default modal", onClose }) => {
   }, [onClose])
   return (
     <div
-      className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center'
+      className='fixed top-0 left-0 w-full h-full bg-zinc-500/50 flex justify-center items-center transition-transform backdrop-blur-xs duration-200'
       onClick={handleBackDropClick}
     >
-      <div
-        className='relative overflow-hidden max-w--[1000px] rounded-md bg-white p-4'
-      >
+      <div className='relative overflow-hidden max-w--[1000px] rounded-md bg-white p-6'>
         <>
-          <h1 className='text-3xl font-bold'>{title}</h1>
+          <h1 className='text-2xl text-teal-950 italic font-bold '>{title}</h1>
         </>
         <button className='absolute top-2 right-2' onClick={onClose}>
-          X
+          <IoClose />
         </button>
         {children}
       </div>

@@ -14,7 +14,7 @@ const AddForm = ({onClose}) => {
   console.log(watch("example"))
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className='flex flex-col'>
+      <div className='flex flex-col gap-2 px-2 py-3'>
         <FormInput name='name' />
         <FormInput name='type' />
         <FormInput name='category' />
@@ -23,7 +23,7 @@ const AddForm = ({onClose}) => {
 
       {errors.exampleRequired && <span>This field is required</span>}
 
-      <input type='submit' />
+      <button type='submit' className="text-teal-100 bg-teal-800 py-2 w-full text-center hover:text-teal-50 hover:bg-teal-600 transition-colors duration-200 rounded-sm">Send</button>
     </form>
   )
 }

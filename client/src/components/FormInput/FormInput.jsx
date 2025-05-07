@@ -7,7 +7,7 @@ const FormInput = ({ name, error }) => {
 
   return (
     <label htmlFor=''>
-      <input {...register("name")} placeholder={placeholderStr} />
+      <input {...register("name")} placeholder={placeholderStr} className="text-teal-950 py-1 shadow-xs  hover:shadow-sm focus:shadow-md transition-all duration-200 placeholder:text-gray-500/35" />
       {/* {error && <span>{error}</span>} */}
     </label>
   )

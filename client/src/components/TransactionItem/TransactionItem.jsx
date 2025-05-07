@@ -5,7 +5,7 @@ const TransactionItem = (item) => {
   const { _id, name, category, amount, type } = item.item
 
   return (
-    <li className='h-[150px] w-[200px] py-2 px-4 bg-teal-50 opacity-80 hover:opacity-100' key={_id}>
+    <li className='h-[150px] min-w-[200px] py-2 px-4 bg-teal-50 opacity-80 hover:opacity-100' key={_id}>
       <h2 className='text-xl font-bold'>{name}</h2>
       <div className='flex justify-between'>
         <p
