@@ -15,3 +15,16 @@ export const fetchTransactions = createAsyncThunk(
     }
   }
 )
+export const addTransaction = createAsyncThunk(
+  "transactions/addTransaction",
+  async (data, thunkAPI) => {
+    try {
+      const response = await instance.post("transactions", data)
+      console.log(response)
+
+      return response.data.transaction
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message)
+    }
+  }
+)

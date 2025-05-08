@@ -17,13 +17,18 @@ const TransactionPage = () => {
   const toggleModal = () => setIsOpen(!isOpen)
 
   return (
-      <div className='flex flex-col gap-2 h-full w-full items-start px-4 py-4  '>
+    <div className='flex flex-col gap-2 h-full w-full items-start px-4 py-4  '>
       <h1 className='text-3xl font-bold text-teal-950'>Transactions</h1>
-      
+
       {transactions.length > 0 && (
         <TransactionsList transactions={transactions} />
       )}
-      <button onClick={toggleModal} className="px-4 py-2 bg-teal-600 rounded-md text-teal-100 text-xl hover:text-teal-50 hover:bg-teal-700 transition-all duration-200">New transaction</button>
+      <button
+        onClick={toggleModal}
+        className='px-4 py-2 bg-teal-600 rounded-md text-teal-100 text-xl hover:text-teal-50 hover:bg-teal-700 transition-all duration-200'
+      >
+        New transaction
+      </button>
       {isOpen && (
         <Modal onClose={toggleModal} title='New transaction'>
           <AddForm onClose={toggleModal} />
