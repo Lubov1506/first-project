@@ -1,27 +1,44 @@
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
-import { addTransaction } from "../../redux/transactions/operations"
+import {
+  addTransaction,
+  editTransaction,
+} from "../../redux/transactions/operations"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { transactionSchema } from "../../helpers/validateSchemas"
 import FormInput from "../FormInput/FormInput"
 import FormSelectInput from "../FormSelectInput/FormSelectInput"
-const AddForm = ({ onClose }) => {
+const AddForm = ({ onClose, editedTransaction, isEdit, id }) => {
   const dispatch = useDispatch()
-
+  const initialState = editedTransaction
+    ? {
+        name: editedTransaction.name,
+        type: editedTransaction.type,
+        category: editedTransaction.category,
+        amount: editedTransaction.amount,
+      }
+    : { name: "", type: "", category: "", amount: "" }
   const {
     register,
     handleSubmit,
     watch,
     control,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(transactionSchema) })
+  } = useForm({
+    resolver: yupResolver(transactionSchema),
+    defaultValues: initialState,
+  })
 
   const onSubmit = (data) => {
-    console.log(data)
-    dispatch(addTransaction(data))
-      .unwrap()
-      .then(() => onClose())
-      .catch((err) => console.log(err))
+    isEdit
+      ? dispatch(editTransaction({ id, data }))
+          .unwrap()
+          .then(() => onClose())
+          .catch((err) => console.log(err))
+      : dispatch(addTransaction(data))
+          .unwrap()
+          .then(() => onClose())
+          .catch((err) => console.log(err))
   }
 
   return (

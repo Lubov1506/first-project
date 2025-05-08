@@ -38,3 +38,18 @@ export const deleteTransaction = createAsyncThunk(
     }
   }
 )
+export const editTransaction = createAsyncThunk(
+  "transactions/editTransaction",
+  async ({ id, data }, thunkAPI) => {
+    console.log(id, data);
+    
+    try {
+      const response = await instance.put(`transactions/${id}`, data)
+      console.log(response);
+      
+      return response.data.updatedTransaction
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message)
+    }
+  }
+)

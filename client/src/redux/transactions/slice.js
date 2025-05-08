@@ -1,5 +1,10 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit"
-import { addTransaction, deleteTransaction, fetchTransactions } from "./operations"
+import {
+  addTransaction,
+  deleteTransaction,
+  editTransaction,
+  fetchTransactions,
+} from "./operations"
 
 const initialState = {
   transactions: [],
@@ -28,22 +33,42 @@ const transactionsSlice = createSlice({
           (item) => item._id !== action.payload
         )
       })
+      .addCase(editTransaction.fulfilled, (state, action) => {
+        state.transactions = state.transactions.map((item) =>
+          item._id === action.payload._id ? action.payload : item
+        )
+      })
       .addMatcher(
-        isAnyOf(fetchTransactions.pending, addTransaction.pending, deleteTransaction.pending),
+        isAnyOf(
+          fetchTransactions.pending,
+          addTransaction.pending,
+          deleteTransaction.pending,
+          editTransaction.pending
+        ),
         (state) => {
           state.error = false
           state.isLoading = true
         }
       )
       .addMatcher(
-        isAnyOf(fetchTransactions.rejected, addTransaction.rejected, deleteTransaction.rejected),
+        isAnyOf(
+          fetchTransactions.rejected,
+          addTransaction.rejected,
+          deleteTransaction.rejected,
+          editTransaction.rejected
+        ),
         (state) => {
           state.isLoading = false
           state.error = true
         }
       )
       .addMatcher(
-        isAnyOf(fetchTransactions.fulfilled, addTransaction.fulfilled, deleteTransaction.fulfilled),
+        isAnyOf(
+          fetchTransactions.fulfilled,
+          addTransaction.fulfilled,
+          deleteTransaction.fulfilled,
+          editTransaction.fulfilled
+        ),
         (state) => {
           state.isLoading = false
           state.error = null
