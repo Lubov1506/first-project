@@ -17,8 +17,7 @@ const TransactionPage = () => {
   const toggleModal = () => setIsOpen(!isOpen)
 
   return (
-    // <div className='flex flex-col gap-2 h-max-full max-w-max items-start px-4 py-4 border-2 border-amber-300 overflow-hidden'>
-      <div className='flex flex-col gap-2 h-full w-full items-start px-4 py-4 border-2 border-amber-300 overflow-hidden'>
+      <div className='flex flex-col gap-2 h-full w-full items-start px-4 py-4  '>
       <h1 className='text-3xl font-bold text-teal-950'>Transactions</h1>
       
       {transactions.length > 0 && (
