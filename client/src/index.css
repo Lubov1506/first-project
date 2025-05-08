@@ -23,3 +23,22 @@ ul.transactions::-webkit-scrollbar-thumb {
 ul.transactions::-webkit-scrollbar-thumb:hover {
   background: rgb(0, 120, 109);
 }
+
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar-thumb {
+  transition: all 2s;
+  background: rgb(0, 150, 137);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 120, 109);
+}

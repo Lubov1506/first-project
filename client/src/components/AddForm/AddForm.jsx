@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form"
-import FormInput from "../FormInput/FormInput"
 import { useDispatch } from "react-redux"
 import { addTransaction } from "../../redux/transactions/operations"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { transactionSchema } from "../../helpers/validateSchemas"
+import FormInput from "../FormInput/FormInput"
+import FormSelectInput from "../FormSelectInput/FormSelectInput"
 const AddForm = ({ onClose }) => {
   const dispatch = useDispatch()
 
@@ -11,6 +12,7 @@ const AddForm = ({ onClose }) => {
     register,
     handleSubmit,
     watch,
+    control,
     formState: { errors },
   } = useForm({ resolver: yupResolver(transactionSchema) })
 
@@ -24,10 +26,16 @@ const AddForm = ({ onClose }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-2'>
-      <div className='flex flex-col gap-2 px-2 py-3'>
+      <div className='flex flex-col gap-3 px-2 py-3'>
         <FormInput name='name' register={register} error={errors.name} />
-        <FormInput name='type' register={register} error={errors.type} />
-        <FormInput
+        <FormSelectInput
+          control={control}
+          name='type'
+          register={register}
+          error={errors.type}
+        />
+        <FormSelectInput
+          control={control}
           name='category'
           register={register}
           error={errors.category}

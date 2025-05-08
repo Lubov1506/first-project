@@ -5,3 +5,5 @@ export { default as TransactionItem } from "./TransactionItem/TransactionItem.js
 export { default as TransactionsList } from "./TransactionsList/TransactionsList.jsx"
 export { default as AddForm } from "./AddForm/AddForm.jsx"
 export { default as Modal } from "./Modal/Modal.jsx"    
+export { default as FormInput } from "./FormInput/FormInput.jsx"
+export { default as FormSelectInput } from "./FormSelectInput/FormSelectInput.jsx"

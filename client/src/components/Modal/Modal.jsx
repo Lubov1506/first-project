@@ -23,7 +23,7 @@ const Modal = ({ children, title = "Default modal", onClose }) => {
       className='fixed top-0 left-0 w-full h-full bg-zinc-500/50 flex justify-center items-center transition-transform backdrop-blur-xs duration-200'
       onClick={handleBackDropClick}
     >
-      <div className='relative overflow-hidden max-w--[1000px] rounded-md bg-white p-6'>
+      <div className='relative  max-w--[1000px] rounded-md bg-white p-6'>
         <>
           <h1 className='text-2xl text-teal-950 italic font-bold '>{title}</h1>
         </>
