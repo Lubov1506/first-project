@@ -20,9 +20,19 @@ export const addTransaction = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await instance.post("transactions", data)
-      console.log(response)
 
       return response.data.transaction
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message)
+    }
+  }
+)
+export const deleteTransaction = createAsyncThunk(
+  "transactions/deleteTransaction",
+  async (id, thunkAPI) => {
+    try {
+      const response = await instance.delete(`transactions/${id}`)      
+      return response.data.removedTransaction._id
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message)
     }

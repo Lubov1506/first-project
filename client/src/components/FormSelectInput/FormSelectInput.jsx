@@ -20,7 +20,6 @@ const FormSelectInput = ({ name, control, error }) => {
     ],
   }
   const placeholderStr = `${name[0].toUpperCase()}${name.slice(1)}`
-  console.log(error)
 
   return (
     <label className='relative'>
