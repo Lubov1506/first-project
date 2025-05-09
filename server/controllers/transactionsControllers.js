@@ -53,9 +53,8 @@ const updateTransaction = async (req, res, next) => {
 
   const updatedTransaction = await transactionsServices.updateTransaction({
     _id,
-    ...req.body,
+    data: req.body,
   })
-  console.log(updateTransaction)
 
   if (!updatedTransaction) {
     throw HttpError(404, "Not found")
