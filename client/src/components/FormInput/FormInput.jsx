@@ -6,8 +6,8 @@ const FormInput = ({ name, register, error }) => {
   const placeholderStr = `${name[0].toUpperCase()}${name.slice(1)}`
 
   return (
-    <label htmlFor='' className='relative'>
-      <input
+    <label className='relative'>
+      <input autoComplete="off"
         {...register(name)}
         placeholder={placeholderStr}
         className='text-teal-950 py-1 shadow-xs  hover:shadow-sm focus:shadow-md transition-all duration-200 placeholder:text-gray-500/35'
