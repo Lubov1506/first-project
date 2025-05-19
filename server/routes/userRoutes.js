@@ -25,4 +25,5 @@ userRoutes.post(
 )
 
 userRoutes.post("/logout", authenticate, userController.logout)
+userRoutes.get("/current", authenticate, userController.getCurrentUser)
 export default userRoutes

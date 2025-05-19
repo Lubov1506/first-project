@@ -53,23 +53,32 @@ const login = async (req, res) => {
   const payload = { id }
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "24h" })
 
-  await userServices.updateUser({ _id: id}, {token} )
-  res.status(200).json({ token, user:{
-    email:user.email
-  } })
+  await userServices.updateUser({ _id: id }, { token })
+  res.status(200).json({
+    token,
+    user: {
+      email: user.email,
+    },
+  })
 }
 
-const logout  = async(req,res)=>{  
+const logout = async (req, res) => {
   const { _id } = req.user
-  const user=await userServices.updateUser({_id}, {token:""})
-  if(!user){
+  const user = await userServices.updateUser({ _id }, { token: "" })
+  if (!user) {
     throw HttpError(404, "Not authorized")
   }
   res.status(204).send()
 }
-
+const getCurrentUser = async (req, res) => {
+  const { email } = req.user
+  res.json({
+    email,
+  })
+}
 export default {
   register: ctrlWrapper(register),
   login: ctrlWrapper(login),
   logout: ctrlWrapper(logout),
+  getCurrentUser: ctrlWrapper(getCurrentUser),
 }
